@@ -8,18 +8,15 @@ public class DB {
 	public static ArrayList<Carrera> listaCarreras = new ArrayList<Carrera>();
 
 	public static void generarDB() {
-
 		generarEquipos(listaEquipos);
 		generarCorredores(listaCorredores);
 		generarCarreras(listaCarreras);
-		System.out.println("DB generada");
-
+		setterListaCorredores(listaCorredores, listaEquipos);
 	}
 
 	private static void generarCarreras(ArrayList<Carrera> lista) {
 		File carreras = new File("carreras.xlsx");
 		Carrera c = null;
-
 		Excel.llamada(carreras, "idsCarreras");
 		Excel.llamada(carreras, "carreras");
 		Excel.llamada(carreras, "nombresCarreras");
@@ -35,7 +32,6 @@ public class DB {
 	private static void generarCorredores(ArrayList<Corredor> lista) {
 		File excel = new File("T11_Fantasy.xlsx");
 		Corredor c = null;
-
 		Excel.llamada(excel, "ids");
 		Excel.llamada(excel, "nombres");
 		Excel.llamada(excel, "apellidos");
@@ -55,7 +51,6 @@ public class DB {
 	private static void generarEquipos(ArrayList<Equipo> lista) {
 		File equipos = new File("equipos.xlsx");
 		Equipo e = null;
-
 		Excel.llamada(equipos, "idsEquipos");
 		Excel.llamada(equipos, "equiposLista");
 		for (int i = 0; i < Excel.idsEquipos.size(); i++) {
@@ -63,6 +58,22 @@ public class DB {
 			e.setId(Excel.idsEquipos.get(i));
 			e.setNombre(Excel.equiposLista.get(i + 1));
 			lista.add(e);
+		}
+	}
+
+	private static void listarCorredorPorEquipo(ArrayList<Corredor> corredores, Equipo equipo) {
+		ArrayList<Corredor> list = new ArrayList<Corredor>();
+		for (Corredor corredor : corredores) {
+			if (corredor.getEquipo().equals(equipo.getNombre())) {
+				list.add(corredor);
+			}
+		}
+		equipo.setCorredores(list);
+	}
+
+	private static void setterListaCorredores(ArrayList<Corredor> corredoes, ArrayList<Equipo> equipo) {
+		for (Equipo equipo2 : equipo) {
+			listarCorredorPorEquipo(listaCorredores, equipo2);
 		}
 	}
 

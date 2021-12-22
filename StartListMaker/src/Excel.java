@@ -25,25 +25,19 @@ public class Excel {
 	public static ArrayList<String> nombresCarreras = new ArrayList<>();
 
 	public static void llamada(File archivo, String metodo) {
-
 		FileInputStream fis = null;
 		XSSFWorkbook wb = null;
 		XSSFSheet hoja;
 		int filas;
 		Row fila;
-
 		try {
-
 			fis = new FileInputStream(archivo);
 			wb = new XSSFWorkbook(fis);
 			hoja = wb.getSheetAt(0);
 			filas = hoja.getLastRowNum();
-
 			for (int i = 0; i <= filas; i++) {
 				fila = hoja.getRow(i);
-
 				switch (metodo) {
-
 				case "ids":
 					recogerIds(fila, ids);
 					break;
@@ -75,12 +69,8 @@ public class Excel {
 					recogerNombresCarreras(fila, nombresCarreras);
 					break;
 				}
-
 			}
-
-		} catch (
-
-		FileNotFoundException e) {
+		} catch (FileNotFoundException e) {
 			JOptionPane.showMessageDialog(null, "No existe el archivo", "Error", JOptionPane.ERROR_MESSAGE);
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -94,7 +84,6 @@ public class Excel {
 				e.printStackTrace();
 			}
 		}
-
 	}
 
 	public static void recogerIds(Row fila, ArrayList<Integer> ids) {
