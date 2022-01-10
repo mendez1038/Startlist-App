@@ -33,6 +33,7 @@ public class Excel {
 		try {
 			fis = new FileInputStream(archivo);
 			wb = new XSSFWorkbook(fis);
+			// Primera hoja del excel
 			hoja = wb.getSheetAt(0);
 			filas = hoja.getLastRowNum();
 			for (int i = 0; i <= filas; i++) {
@@ -88,6 +89,7 @@ public class Excel {
 
 	public static void recogerIds(Row fila, ArrayList<Integer> ids) {
 		Cell celda;
+		// Columna A
 		celda = fila.getCell(0);
 		if (celda != null)
 			switch (celda.getCellType().toString()) {
@@ -99,6 +101,7 @@ public class Excel {
 
 	public static void recogerNombres(Row fila, ArrayList<String> nombres) {
 		Cell celda;
+		// Columna B
 		celda = fila.getCell(1);
 		if (celda != null)
 			switch (celda.getCellType().toString()) {
@@ -110,6 +113,7 @@ public class Excel {
 
 	public static void recogerApellidos(Row fila, ArrayList<String> apellidos) {
 		Cell celda;
+		// Columna C
 		celda = fila.getCell(2);
 		if (celda != null)
 			switch (celda.getCellType().toString()) {
@@ -121,6 +125,7 @@ public class Excel {
 
 	public static void recogerMedias(Row fila, ArrayList<Integer> medias) {
 		Cell celda;
+		// Columna R
 		celda = fila.getCell(17);
 		if (celda != null)
 			switch (celda.getCellType().toString()) {
@@ -132,6 +137,7 @@ public class Excel {
 
 	public static void recogerEquipos(Row fila, ArrayList<String> equipos) {
 		Cell celda;
+		// Columna W
 		celda = fila.getCell(22);
 		if (celda != null)
 			switch (celda.getCellType().toString()) {
@@ -143,6 +149,7 @@ public class Excel {
 
 	public static void recogerIdsEquipos(Row fila, ArrayList<Integer> idsEquipos) {
 		Cell celda;
+		// Columna A
 		celda = fila.getCell(0);
 		if (celda != null)
 			switch (celda.getCellType().toString()) {
@@ -154,6 +161,7 @@ public class Excel {
 
 	public static void recogerEquiposLista(Row fila, ArrayList<String> equiposLista) {
 		Cell celda;
+		// Columna B
 		celda = fila.getCell(1);
 		if (celda != null)
 			switch (celda.getCellType().toString()) {
@@ -165,6 +173,7 @@ public class Excel {
 
 	public static void recogerIdsCarreras(Row fila, ArrayList<Integer> idsCarreras) {
 		Cell celda;
+		// Columna A
 		celda = fila.getCell(0);
 		if (celda != null)
 			switch (celda.getCellType().toString()) {
@@ -176,6 +185,7 @@ public class Excel {
 
 	public static void recogerCarreras(Row fila, ArrayList<String> carreras) {
 		Cell celda;
+		// Columna B
 		celda = fila.getCell(1);
 		if (celda != null)
 			switch (celda.getCellType().toString()) {
@@ -187,6 +197,7 @@ public class Excel {
 
 	public static void recogerNombresCarreras(Row fila, ArrayList<String> nombresCarreras) {
 		Cell celda;
+		// Columna C
 		celda = fila.getCell(2);
 		if (celda != null)
 			switch (celda.getCellType().toString()) {

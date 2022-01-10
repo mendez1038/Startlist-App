@@ -8,9 +8,15 @@ public class DB {
 	public static ArrayList<Carrera> listaCarreras = new ArrayList<Carrera>();
 
 	public static void generarDB() {
+
+		// Leer excel de equipos y almacenarlos juntos con sus atributos en una lista
 		generarEquipos(listaEquipos);
+		// Leer excel de T11_Fantasy y almacenar los corredores juntos con sus atributos
+		// en una lista
 		generarCorredores(listaCorredores);
+		// Leer excel de carreras y almacenarlas juntos con sus atributos en una lista
 		generarCarreras(listaCarreras);
+		// Añadir a cada equipo la lista de corredores al que corresponden
 		setterListaCorredores(listaCorredores, listaEquipos);
 	}
 
